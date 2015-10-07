@@ -34,134 +34,52 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
  body { 
  	background: url(../image/bg_about.jpg) no-repeat fixed left top; 
  } 
- .navWrapper { 
- 	border-top: 1px dashed #6F3BA4; 
- 	border-bottom: 1px dashed #6F3BA4; 
- 	overflow: hidden; 
-	width: 900px; 
-	margin-left: 500px;
- } 
- 
- 
- .NameWebSite { 
+
+ header { 
  	width: 900px; 
  	margin-right: auto; 
  	margin-left: auto; 
  	height: 115px; 
 	padding-left: 350px;
  } 
- .NameWebSite h1 {
- font-size: 120px;
-  color: white;
-  line-height: 1em;
-  text-shadow: 4px 3px 6px rgba(0,0,0,.5);
-  position: absolute;
-  opacity: 0.9;
+ header h1 {
+	font-size: 120px;
+	color: white;
+	line-height: 1em;
+	text-shadow: 4px 3px 6px rgba(0,0,0,.5);
+	position: absolute;
+	opacity: 0.9;
 }
-
-.NameWebSite h1 strong {
+ 
+ 
+header h1 strong {
 	
-		color: #FF6600;
+	color: #FF6600;
 	font-family: "Arial Black", Arial, Helvetica, sans-serif;
 	font-size: 0.5em;
 	margin-right: -3.25em;
 	opacity: 0.9;
-	
-
-
 }
  
- 
- .mainWrapper { 
- 	width: 900px; 
- 	margin: 0 auto; 
+ nav { 
+ 	border-top: 1px dashed #6F3BA4; 
+ 	border-bottom: 1px dashed #6F3BA4; 
  	overflow: hidden; 
- 	padding-bottom: 40px; 
-	background-color: rgba(255, 255, 255, 0.7); /* Цвет фона и значение прозрачности */
+	width: 900px; 
+	margin-left: 500px;
  } 
- .main { 
- 	float: left; 
- 	width: 630px; 
- 	padding-top: 30px; 
- 	font-family: Tahoma, Geneva, sans-serif; 
- } 
- .footerWrapper { 
- 	background: #6F3BA4; 
- 	clear: both; 
- } 
-.main p { 
- 	font-size: 14px; 
- 	line-height: 150%; 
- 	margin-bottom: 10px; 
- } 
- .main ol, .main ul { 
-   margin-bottom: 10px; 
-   margin-left: 20px; 
- } 
- 
- 
- .main li { 
-   font-size: 14px; 
- } 
- 
- 
- .main h2 { 
- 	color: #333; 
- 	font-size: 20px; 
- 	margin-top: 20px; 
- 	margin-bottom: 5px; 
- } 
- .main h1 { 
- 	color: #6F3BA4; 
- 	font: 30px "Palatino Linotype", "Book Antiqua", Palatino, serif; 
- 	border-bottom: 1px solid #FFF; 
- 	margin-bottom: 20px; 
- } 
- .sidebar { 
- 	 
- 	float: right; 
- 	width: 220px; 
- 	margin-top: 60px; 
- } 
-
-
-  .sidebar p { 
- 	margin-bottom:10px; 
- 	color: #512C76;
-	font-family: Tahoma, Geneva, sans-serif; 
- 	font-size: 12px; 
- } 
-  
- .sidebar p:first-line { 
-   font-weight: bold; 
- } 
- .footer { 
- 	width: 900px; 
- 	margin-right: auto; 
- 	margin-left: auto; 
- 	overflow: hidden; 
- 	padding: 20px 0; 
- } 
- .footerMain { 
- 	 padding-left: 300px; 
- } 
- .footerMain p { 
-
- 	font: 12px Tahoma, Geneva, sans-serif; 
- 	color: #FFF; 
- } 
- .mainNav li { 
+  .mainNav ul li { 
  	margin: 0px; 
  	padding: 0px; 
  	list-style: none; 
  	float: left; 
  } 
- .mainNav { 
+ .mainNav ul{ 
  	padding: 0 0 0 225px; 
  	width: 900px; 
  	margin: 0 auto; 
  } 
- .mainNav a { 
+ .mainNav ul a { 
  	display: block; 
  	padding: 5px 20px; 
  	text-decoration: none; 
@@ -169,45 +87,91 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
  	font: 14px Tahoma, Geneva, sans-serif; 
  } 
  
- 
- .home a.homeLink, 
- .news a.newsLink, 
- .about  a.aboutLink, 
- .forum a.forumLink { 
- 	color: #999;	 
- background-image: url(../image/link_arrow.png); 
- 	background-repeat: no-repeat; 
- 	background-position: 10px 12px; 
-   padding-left: 26px; 
- 
- 
- } 
- 
- 
- .home .footerNav a.homeLink, 
- .news .footerNav a.newsLink, 
- .about .footerNav a.aboutLink, 
- .forum .footerNav a.forumLink { 
- background-image: url(../image/link_arrow_rt.png); 
- background-position: 5px 6px; 
- padding-left: 20px; 
- 
- 
- } 
- 
  .mainNav a:hover { 
    background-color: #F5E281; 
  } 
  
  
- .sidenav { 
+ .content { 
+ 	width: 900px; 
+ 	margin: 0 auto; 
+ 	overflow: hidden; 
+ 	padding-bottom: 40px; 
+	background-color: rgba(255, 255, 255, 0.7); /* Цвет фона и значение прозрачности */
+ } 
+ article { 
+ 	float: left; 
+ 	width: 630px; 
+ 	padding-top: 30px; 
+ 	font-family: Tahoma, Geneva, sans-serif; 
+ } 
+ 
+article p { 
+ 	font-size: 14px; 
+ 	line-height: 150%; 
+ 	margin-bottom: 10px; 
+ } 
+ article ol, article ul { 
+   margin-bottom: 10px; 
+   margin-left: 20px; 
+ } 
+ 
+ 
+article li { 
+   font-size: 14px; 
+ } 
+ 
+ 
+ article h2 { 
+ 	color: #333; 
+ 	font-size: 20px; 
+ 	margin-top: 20px; 
+ 	margin-bottom: 5px; 
+ } 
+ article h1 { 
+ 	color: #6F3BA4; 
+ 	font: 30px "Palatino Linotype", "Book Antiqua", Palatino, serif; 
+ 	border-bottom: 1px solid #FFF; 
+ 	margin-bottom: 20px; 
+ } 
+ 
+ article a { 
+ 	text-decoration: none; 
+ 	color: #6F3BA4; 
+ 	font: 14px Tahoma, Geneva, sans-serif; 
+   font-weight: bold; 
+ } 
+ article ul { 
+ 	padding-top: 10px; 
+ } 
+
+ 
+ aside { 
+ 	 
+ 	float: right; 
+ 	width: 220px; 
+ 	margin-top: 60px; 
+ } 
+
+
+  aside p { 
+ 	margin-bottom:10px; 
+ 	color: #512C76;
+	font-family: Tahoma, Geneva, sans-serif; 
+ 	font-size: 12px; 
+ } 
+  
+ aside p:first-line { 
+   font-weight: bold; 
+ } 
+   .sidenav { 
   background: url(../image/screen.png); 
  	margin: 0 0 30px 0; 
  	padding: 0px; 
  	list-style: none; 
  	border-bottom: 1px dotted #FFF; 
  } 
- .sidenav a { 
+  .sidenav a { 
  	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; 
  	text-decoration: none; 
  	padding: 5px 10px; 
@@ -220,9 +184,62 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
  } 
  
  
+
+ 
+ 
+ .home .mainNav a.homeLink, 
+ .news .mainNav  a.newsLink, 
+ .about .mainNav  a.aboutLink, 
+ .forum  .mainNav a.forumLink { 
+ 	color: #999;	 
+	background-image: url(../image/link_arrow.png); 
+ 	background-repeat: no-repeat; 
+ 	background-position: 10px 12px; 
+	padding-left: 26px; 
+ 
+ 
+ } 
+ 
+ 
+ .home .footerNav a.homeLink, 
+ .news .footerNav a.newsLink, 
+ .about .footerNav a.aboutLink, 
+ .forum .footerNav a.forumLink { 
+
+ background-position: 5px 6px; 
+ 
+ 
+ 
+ } 
+ 
+ 
+ 
+footer { 
+ 	width: 900px; 
+ 	margin-right: auto; 
+ 	margin-left: auto; 
+ 	overflow: hidden; 
+ 	padding: 20px 0; 
+	background: #6F3BA4; 
+ 	clear: both; 
+ } 
+ 
+
+ 
+ .footerMain { 
+  	 padding-left: 280px; 
+	 margin-top: 11px;
+ } 
+ .footerMain p { 
+
+ 	font: 12px Tahoma, Geneva, sans-serif; 
+ 	color: #C0C0C0; 
+ } 
+ 
+ 
  .footerNav ul { 
  	margin: 0px; 
- 	padding-left: 300px; 
+ 	padding-left: 350px; 
  	list-style: none; 
 	
 	   
@@ -243,12 +260,4 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
  
  
  
- .main a { 
- 	text-decoration: none; 
- 	color: #6F3BA4; 
- 	font: 14px Tahoma, Geneva, sans-serif; 
-   font-weight: bold; 
- } 
- .main ul { 
- 	padding-top: 10px; 
- } 
+ 
