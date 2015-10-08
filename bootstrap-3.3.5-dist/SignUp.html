@@ -16,90 +16,30 @@
     </head>
     <body>
         <div class="container">
-            <form name="formbt" class="form-signup col-lg-5 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-7 col-sm-offset-3">
+            <form name="regform" class="form-signup col-lg-5 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-7 col-sm-offset-3" method="POST">
                 <h2 class="form-signup-heading">Please, sign up</h2>
                 <label for="inputUsername">Username:</label>
                 <input type="text" id="inputUsername" name="inputUsername" class="form-control" placeholder="Username" required autofocus>
                 <label for="inputEmail">Email address:</label>
                 <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputPassword">Password</label>
-                <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="Password"  class="form-control" placeholder="Password" onkeyup="ClearP(); return false" required>
                 <label for="inputPasswordsecond">Password Confirm:</label>
-                <input type="password" id="inputPasswordsecond" name="inputPasswordsecond" class="form-control" placeholder="Confirm Password" required>
+                <input type="password" id="PasswordConfirm"  onkeyup="checkPass();return false;" class="form-control" placeholder="Confirm Password" required>
+                <span id="confpass"></span>
                 <br/>
                     
-                <button  class="btn btn-lg btn-primary btn-block" type="submit" onclick="checkForm(formbt)">Sign up</button>
+                <button id="bt"  class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
             </form>
             
             
         </div>
                                                 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.js"></script>
         
-        <script>
-            window.onload =            
-        function(){
-            
-            
-            }
-            
-            
-            
-            
-            function checkForm(form)
-    {
-      if(form.inputUsername.value == "") {
-      alert("Error: Username cannot be blank!");
-      form.username.focus();
-      return false;
-    }
-    re = /^\w+$/;
-    if(!re.test(form.inputUsername.value)) {
-      alert("Error: Username must contain only letters, numbers and underscores!");
-      form.username.focus();
-      return false;
-    }
-
-    if(form.inputPassword.value != "" && form.inputPassword.value == form.inputPasswordsecond.value) {
-      if(form.inputPassword.value.length < 6) {
-        alert("Error: Password must contain at least six characters!");
-        form.inputPassword.focus();
-        return false;
-      }
-      if(form.inputPassword.value == form.inputUsername.value) {
-        alert("Error: Password must be different from Username!");
-        form.inputPassword.focus();
-        return false;
-      }
-      re = /[0-9]/;
-      if(!re.test(form.inputPassword.value)) {
-        alert("Error: password must contain at least one number (0-9)!");
-        form.inputPassword.focus();
-        return false;
-      }
-      re = /[a-z]/;
-      if(!re.test(form.inputPassword.value)) {
-        alert("Error: password must contain at least one lowercase letter (a-z)!");
-        form.inputPassword.focus();
-        return false;
-      }
-      re = /[A-Z]/;
-      if(!re.test(form.inputPassword.value)) {
-        alert("Error: password must contain at least one uppercase letter (A-Z)!");
-        form.inputPassword.focus();
-        return false;
-      }
-    } else {
-      alert("Error: Please check that you've entered and confirmed your password!");
-      form.inputPassword.focus();
-      return false;
-    }
-
-    alert("You entered a valid password: " + form.inputPassword.value);
-    return true;
-  }
-
-        </script>
+        <script src="js/valid.js"></script>
+        
+        
     </body>
 </html>

@@ -4,20 +4,18 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
- * Copyright 2013, Codrops
- * http://www.codrops.com
+ 
  */
 ;( function( $, window, undefined ) {
 
-	'use strict';
+	'use strict';//строий режим джава скрипта , проинициалтизированные переменные
 
 	// global
-	var Modernizr = window.Modernizr;
+	var Modernizr = window.Modernizr;//фрейм форк
 
-	$.CBPFWSlider = function( options, element ) {
-		this.$el = $( element );
-		this._init( options );
+	$.CBPFWSlider = function( options, element ) { //анонимная функция
+		this.$el = $( element );//текущий елемент
+		this._init( options );//приватное свойство, конструктор
 	};
 
 	// the options
@@ -31,7 +29,7 @@
 	$.CBPFWSlider.prototype = {
 		_init : function( options ) {
 			// options
-			this.options = $.extend( true, {}, $.CBPFWSlider.defaults, options );
+			this.options = $.extend( true, {}, $.CBPFWSlider.defaults, options );//разширяет плагин джиквери
 			// cache some elements and initialize some variables
 			this._config();
 			// initialize/bind the events
@@ -66,7 +64,7 @@
 				};
 
 			if( this.support ) {
-				this.transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ] + '.cbpFWSlider';
+				this.transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ] + '.cbpFWSlider';//генерим данными из модернайзера
 				this.transformName = transformNames[ Modernizr.prefixed( 'transform' ) ];
 			}
 			// current and old item´s index
@@ -104,7 +102,7 @@
 		},
 		_initEvents : function() {
 			
-			var self = this;
+			var self = this; 
 			if( this.itemsCount > 1 ) {
 				this.$navPrev.on( 'click.cbpFWSlider', $.proxy( this._navigate, this, 'previous' ) );
 				this.$navNext.on( 'click.cbpFWSlider', $.proxy( this._navigate, this, 'next' ) );
@@ -145,12 +143,12 @@
 				this.$list.css( 'margin-left', -1 * this.current * 100 + '%' );	
 			}
 			
-			var transitionendfn = $.proxy( function() {
+			var transitionendfn = $.proxy( function() {//когда прошла анимация
 				this.isAnimating = false;
 			}, this );
 
 			if( this.support ) {
-				this.$list.on( this.transEndEventName, $.proxy( transitionendfn, this ) );
+				this.$list.on( this.transEndEventName, $.proxy( transitionendfn, this ) );//реакция на ивент, лисенер
 			}
 			else {
 				transitionendfn.call();
@@ -170,7 +168,7 @@
 			this.$navDots.eq( this.old ).removeClass( 'cbp-fwcurrent' ).end().eq( this.current ).addClass( 'cbp-fwcurrent' );
 
 		},
-		_jump : function( position ) {
+		_jump : function( position ) {//переход на точки
 
 			// do nothing if clicking on the current dot, or if the list is currently moving
 			if( position === this.current || this.isAnimating ) {
@@ -206,7 +204,7 @@
 	};
 
 	$.fn.cbpFWSlider = function( options ) {
-		if ( typeof options === 'string' ) {
+		if ( typeof options === 'string' ) {//если не правильно заинициализировать опции
 			var args = Array.prototype.slice.call( arguments, 1 );
 			this.each(function() {
 				var instance = $.data( this, 'cbpFWSlider' );
