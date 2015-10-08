@@ -1,0 +1,20 @@
+.blog-header h1 {
+ font-size: 100px;
+  color: white;
+  line-height: 1em;
+  text-shadow: 4px 3px 6px rgba(0,0,0,.5);
+  position: absolute;
+  opacity: 0.9;
+}
+
+.blog-header h1 strong {
+	
+    color:  white;
+	font-family: "Arial Black", Arial, Helvetica, sans-serif;
+	font-size: 0.5em;
+	margin-right: -3.25em;
+	opacity: 0.9;
+	
+
+
+}
