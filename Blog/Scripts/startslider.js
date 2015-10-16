@@ -1,0 +1,4 @@
+﻿$(function () {
+      $('#cbp-fwslider').cbpFWSlider();
+
+});

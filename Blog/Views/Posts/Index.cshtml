@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ProgBlog.Models.Posts>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="blog-header col-lg-offset-3">
+    <h1><strong>Programmer's</strong> Blog</h1>
+</div>
+
+@Html.Partial("_Posts",Model)

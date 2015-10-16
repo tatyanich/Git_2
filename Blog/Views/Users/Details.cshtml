@@ -1,0 +1,59 @@
+﻿@model ProgBlog.Models.Users
+
+@{
+    ViewBag.Title = "Details";
+}
+<br />
+<br />
+<h2>Profile</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 lead">User profile<hr></div>
+        </div>
+        <div class="row">
+            @if (Model.Avatar !=null) { 
+            <div class="col-md-2 text-center">
+                @Html.Raw("<img class='img-circle avatar avatar-original' style='-webkit-user-select:none; display: block; margin: auto;' src=\"data:image/jpeg;base64,"
+                                 + Convert.ToBase64String(Model.Avatar) + "\" />")
+            </div>
+            }
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="only-bottom-margin">@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="text-muted">@Html.DisplayNameFor(model => model.Email):</span> @Html.DisplayFor(model => model.Email)<br>
+                        <span class="text-muted">@Html.DisplayNameFor(model => model.Profession):</span> @Html.DisplayFor(model => model.Profession)<br>
+                        <span class="text-muted">@Html.DisplayNameFor(model => model.Vkontakte)</span> @Html.DisplayFor(model => model.Vkontakte)<br>
+                        <span class="text-muted">@Html.DisplayNameFor(model => model.Facebook):</span> @Html.DisplayFor(model => model.Facebook)<br>
+                        <span class="text-muted">@Html.DisplayNameFor(model => model.Skype):</span> @Html.DisplayFor(model => model.Skype)<br><br>
+
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      @if ((Session["UserId"] != null) && (Convert.ToInt32(Session["UserId"]) == Model.Id))
+      {
+        <div class="row">
+            <div class="col-md-12">
+                <hr><button class="btn btn-default pull-right"><i class="glyphicon glyphicon-pencil"></i> @Html.ActionLink("Edit", "Edit", new { id = Model.Id })</button>
+            </div>
+        </div>
+      }
+
+
+    </div>
+
+</div>
+
+
+
+
+

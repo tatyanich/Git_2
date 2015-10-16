@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ProgBlog.Models.Posts>
+
+<div class="row" id="postlist">
+    @foreach (var item in Model.OrderByDescending(x => x.Datetime))
+    {
+
+        <div class="col-lg-8">
+            <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+            <p class="blog-post-meta">@item.Datetime.ToString("dd-MMMM-yyyy") by <a href="@Href("~/Users/Details/"+item.UserId)">@Html.DisplayFor(modelItem => item.Users.Username)</a></p>
+            <p>@Html.DisplayFor(modelItem => item.Content)</p>
+            <p><a class="btn btn-default" href="@Href("~/Posts/Details/"+item.Id)" role="button">View details &raquo;</a></p>
+        </div>
+
+
+    }
+
+</div>
