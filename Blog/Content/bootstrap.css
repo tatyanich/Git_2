@@ -11,6 +11,8 @@ html {
 }
 body {
   margin: 0;
+ 
+  /*margin-bottom:200px;*/
 }
 article,
 aside,
@@ -6824,6 +6826,7 @@ button.close {
   text-align: center;
   background-color: #f9f9f9;
   border-top: 1px solid #e5e5e5;
+  
 }
 .blog-footer p:last-child {
   margin-bottom: 0;

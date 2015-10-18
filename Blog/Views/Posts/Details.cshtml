@@ -1,4 +1,4 @@
-﻿@model ProgBlog.Models.Posts
+﻿@model ProgBlog.Models.Post
 
 @{
     ViewBag.Title = "Details";
@@ -15,57 +15,60 @@
     <div class="col-sm-8 blog-main">
         <div class="blog-post">
             <h2 class="blog-post-title">@Html.DisplayFor(modelItem => modelItem.Title)</h2>
-            <p class="blog-post-meta">@Model.Datetime.ToString("dd-MMMM-yyyy")</p>
+            <p class="blog-post-meta">@Model.DateTime.ToString("dd-MMMM-yyyy")</p>
             <p>@Html.DisplayFor(modelItem => modelItem.Content)</p>
         </div>
 
         <hr />
         <div class="well">
             <h4>Leave a Comment:</h4>
-            <form action="@Href("~/Posts/Comments/"+Model.Id)" method="post" role="form">
+            <form action="@Href("~/Posts/Comments/"+Model.ID)" method="post" role="form">
                 <div class="form-group">
-                    <input type="text" id="commentNamePrompt" name="name" />Name(required)<br />
-                    <textarea class="form-control" rows="3" name="message"></textarea>
+                    Name(required)
+                    <input type="text" id="commentNamePrompt" name="name" class="form-control" /><br />
+
+                    <textarea class="form-control" rows="5" name="message"></textarea>
                 </div>
-                <input type="submit" name="submit" class="btn btn-primary" value="Submit"/>
+               
+                <input type="submit" name="submit" class="btn btn-primary" value="Submit" />
             </form>
         </div>
         <hr>
 
 
-        @foreach (var item in Model.Comments.OrderBy(x => x.Datetime))
+        @foreach (var item in Model.Comments.OrderBy(x => x.DateTime))
         {
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">
-                   @item.Author<small>@item.Datetime.ToString("dd-MMMM-yyyy")</small>
-                </h4>
-                 @item.Message
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        @item.Author<small>@item.DateTime.ToString("dd-MMMM-yyyy")</small>
+                    </h4>
+                    @item.Content
+                </div>
             </div>
-        </div>
-        <hr>
+            <hr>
         }
     </div>
     <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-        
+
         <div class="sidebar-module sidebar-module-inset">
             @if (Model.Users.Avatar != null)
             {
-            @Html.Raw("<img class='img-circle avatar avatar-original' style='-webkit-user-select:none; display: block; ' src=\"data:image/jpeg;base64,"
+                @Html.Raw("<img class='img-circle avatar avatar-original' style='-webkit-user-select:none; display: block; ' src=\"data:image/jpeg;base64,"
                                                + Convert.ToBase64String(Model.Users.Avatar) + "\" />")
             }
             <p class="blog-post-meta">Author: <a href="@Href("~/Users/Details/" + Model.UserId)">@Html.DisplayFor(modelItem => modelItem.Users.Username)</a></p>
         </div>
-        
+
         <div class="sidebar-module">
             <h4>Contact me:</h4>
             <ol class="list-unstyled">
-                <li><a href="@Href(Model.Users.Vkontakte)"><i class="fa fa-vk"></i>Vkonakte</a></li>
-                <li><a href="@Href(Model.Users.Skype)"><span class="fa fa-skype"></span>Skype</a></li>
-                <li><a href="@Href(Model.Users.Facebook)"><i class="fa fa-facebook-square"></i>Facebook</a></li>
+                <li>Vkonakte: <a href="@Href(Model.Users.Vkontakte)"><i class="fa fa-vk"></i>@Model.Users.Vkontakte</a></li>
+                <li>Skype: <a href="@Href(Model.Users.Skype)"><i class="fa fa-skype"></i>@Model.Users.Skype</a></li>
+                <li>Facebook: <a href="@Href(Model.Users.Facebook)"><i class="fa fa-facebook-square"></i>@Model.Users.Facebook</a></li>
             </ol>
         </div>
     </div>
@@ -75,6 +78,9 @@
 
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if ((Session["UserId"] != null) && (Convert.ToInt32(Session["UserId"]) == Model.UserId))
+    {
+    <span>@Html.ActionLink("Edit", "Edit", new { id = Model.ID })  |</span><span> @Html.ActionLink("Delete", "Delete", new { id = Model.ID })  |</span> 
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>

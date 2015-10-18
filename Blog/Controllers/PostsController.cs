@@ -16,7 +16,7 @@ namespace ProgBlog.Controllers
 
         public ActionResult Autocomplete(string term)
         {
-            var post = db.Posts.Where(p => p.Title.Contains(term)).Select(p => new { lable = p.Title });
+            var post = db.Post.Where(p => p.Title.Contains(term)).Select(p => new { lable = p.Title });
 
             return Json(post, JsonRequestBehavior.AllowGet);
         }
@@ -24,7 +24,7 @@ namespace ProgBlog.Controllers
         // GET: Posts
         public ActionResult Index(string searchstr = null)
         {
-            var post = db.Posts.Include(p => p.Users).Where(p=> searchstr==null|| p.Title.Contains(searchstr));
+            var post = db.Post.Include(p => p.Users).Where(p => searchstr == null || p.Title.Contains(searchstr));
 
             if (Request.IsAjaxRequest())
             {
@@ -40,7 +40,7 @@ namespace ProgBlog.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Posts post = db.Posts.Find(id);
+            Post post = db.Post.Find(id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -60,15 +60,15 @@ namespace ProgBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Posts post)
+        public ActionResult Create(Post post)
         {
-            post.Datetime = DateTime.Now;
+            post.DateTime = DateTime.Now;
 
             if (ModelState.IsValid)
             {
-                db.Posts.Add(post);
+                db.Post.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index","Users");
+                return RedirectToAction("Index", "Users");
             }
 
             //ViewBag.UserId = new SelectList(db.Users, "ID", "Username", post.UserId);
@@ -81,15 +81,15 @@ namespace ProgBlog.Controllers
 
         public ActionResult Comments(int id, string name, string message)
         {
-            Posts post = GetPost(id);
+            Post post = GetPost(id);
             Comments comment = new Comments();
 
-            comment.Posts = post;
-            comment.Datetime = DateTime.Now;
+            comment.Post = post;
+            comment.DateTime= DateTime.Now;
             comment.Author = name;
-            
-            comment.Message = message;
-            if (((comment.Author == "") && (comment.Message == "")) || (comment.Message == " "))
+
+            comment.Content = message;
+            if (((comment.Author == "") && (comment.Content == "")) || (comment.Content == " "))
             {
                 return RedirectToAction("Details", new
                 {
@@ -121,7 +121,7 @@ namespace ProgBlog.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Posts post = db.Posts.Find(id);
+            Post post = db.Post.Find(id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -135,8 +135,10 @@ namespace ProgBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Title,Content")] Posts post)
+        public ActionResult Edit(Post post)
         {
+            post.DateTime = DateTime.Now;
+          
             if (ModelState.IsValid)
             {
                 db.Entry(post).State = EntityState.Modified;
@@ -154,7 +156,7 @@ namespace ProgBlog.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Posts post = db.Posts.Find(id);
+            Post post = db.Post.Find(id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -167,10 +169,10 @@ namespace ProgBlog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Posts post = db.Posts.Find(id);
-            db.Posts.Remove(post);
+            Post post = db.Post.Find(id);
+            db.Post.Remove(post);
             db.SaveChanges();
-            return RedirectToAction("Index","Users");
+            return RedirectToAction("Index", "Users");
         }
 
         protected override void Dispose(bool disposing)
@@ -184,9 +186,9 @@ namespace ProgBlog.Controllers
 
 
 
-        private Posts GetPost(int? id)
+        private Post GetPost(int? id)
         {
-            return id.HasValue ? db.Posts.Where(x => x.Id == id).First() : new Posts() { Id = -1 };
+            return id.HasValue ? db.Post.Where(x => x.ID == id).First() : new Post() { ID = -1 };
 
         }
     }

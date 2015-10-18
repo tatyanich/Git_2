@@ -1,17 +1,13 @@
-﻿using ProgBlog.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace ProgBlog.Controllers
 {
     public class HomeController : Controller
     {
-        BlogEntities db = new BlogEntities();
         public ActionResult Index()
         {
             return View();
@@ -19,7 +15,9 @@ namespace ProgBlog.Controllers
 
         public ActionResult About()
         {
-           return View();
+            ViewBag.Message = "Your application description page.";
+
+            return View();
         }
 
         public ActionResult Contact()
@@ -28,8 +26,5 @@ namespace ProgBlog.Controllers
 
             return View();
         }
-
-            }
-
-    
+    }
 }

@@ -14,7 +14,7 @@
     };
 
     var createAutocomplete = function () {
-        var $input = $('#mysearch');
+        var $input = $(this);
         var options = {
             source: $input.attr("data-otf-autocomplete")
         };

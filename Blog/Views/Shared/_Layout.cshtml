@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Programmer's Blog</title>
-    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/component.css")
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>‌​
-    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>‌
+
 
 </head>
 <body>
@@ -35,16 +35,6 @@
                 </ul>
                 @Html.Partial("_LoginPartial")
 
-                @*@using (Ajax.BeginForm(null, null,
-                new AjaxOptions
-                {
-                    HttpMethod = "get",
-                    InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "postlist"
-                }, htmlAttributes: new { @class = "navbar-form navbar-right" }))
-                {
-                    <input type="search" class="form-control" name="searchstr" placeholder="Search...">
-                }*@
                 <form class="navbar-form navbar-right" method="get" action="@Url.Action("Index")"
                       data-otf-ajax="true" data-otf-target="#postlist">
                     <input id="mysearch" type="search" class="form-control" name="searchstr" data-otf-autocomplete="@Url.Action("Autocomplete")" placeholder="Search...">
@@ -57,23 +47,22 @@
         <hr />
 
 
-        
+
     </div>
-    <footer class="blog-footer">
+    <footer class="blog-footer navbar-fixed-bottom">
         <p><strong>Copyright @DateTime.Now.Year, The Programers Blog </strong></p>
         <p>All are reserved. </p>
         <p><a href="#">Back to top</a></p>
     </footer>
 
-    @Scripts.Render("~/bundles/otf")
+  
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/sld")
+   @Scripts.Render("~/bundles/otf")
     <script src="~/Scripts/otf.js"></script>
-   <!-- <script src="~/Scripts/jquery.cbpFWSlider.min.js"></script>
-
     <script src="~/Scripts/startslider.js"></script>
-  -->
-   
+    <script src="~/Scripts/jquery.cbpFWSlider.min.js"></script>
+    
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>

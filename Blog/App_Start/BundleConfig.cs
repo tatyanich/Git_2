@@ -9,11 +9,11 @@ namespace ProgBlog
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/otf").Include(
-                "~/Scripts/jquery-{version}.js",
-                "~/Scripts/jquery-ui-{version}.js",
-                "~/Scripts/jquery.validate*",
-                "~/Scripts/otf.js"
-                ));
+               "~/Scripts/jquery-{version}.js",
+               "~/Scripts/jquery-ui.js",
+               "~/Scripts/jquery.validate*",
+               "~/Scripts/otf.js"
+               ));
             bundles.Add(new ScriptBundle("~/bundles/sld").Include(
                 "~/Scripts/jquery.cbpFWSlider.min.js",
                 "~/Scripts/startslider.js"

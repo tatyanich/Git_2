@@ -23,15 +23,8 @@ namespace ProgBlog.Controllers
         public ActionResult Index(int? id)
         {
             int userid = Convert.ToInt32(Session["UserId"]);
-            var posts = db.Posts.Where(p => p.UserId == id).Select(p => p);
-            ViewBag.AuthorId=RouteData.Values["id"];
-            //if (id!=userid) {
-            //    ViewBag.Message ="neok";
-            //}
-            //else
-            //{
-            //    ViewBag.Message = "";
-            //}
+            var posts = db.Post.Where(p => p.UserId == id).Select(p => p);
+            ViewBag.AuthorId = RouteData.Values["id"];
             return View(posts.ToList());
         }
 
@@ -50,10 +43,10 @@ namespace ProgBlog.Controllers
             return View(users);
         }
 
-            
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registrate( Users users)
+        public ActionResult Registrate(Users users)
         {
             var v = db.Users.Where(a => a.Username.Equals(users.Username) || a.Email.Equals(users.Email)).FirstOrDefault();
             if (ModelState.IsValid && v == null)
@@ -77,7 +70,7 @@ namespace ProgBlog.Controllers
         }
 
         [HttpPost]
-        
+
         public ActionResult Login(Users user)
         {
             var v = db.Users.Where(a => a.Username.Equals(user.Username) && a.Password.Equals(user.Password)).FirstOrDefault();
@@ -90,7 +83,7 @@ namespace ProgBlog.Controllers
             }
             else
             {
-                Session["UserId"] = v.Id.ToString();
+                Session["UserId"] = v.ID.ToString();
                 Session["LogedUserName"] = v.Username.ToString();
 
                 return RedirectToAction("Index", new { id = Convert.ToInt32(Session["UserId"]) });
@@ -124,8 +117,8 @@ namespace ProgBlog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Users users, HttpPostedFileBase upload)
         {
-           
-                if (ModelState.IsValid)
+
+            if (ModelState.IsValid)
             {
                 if (upload != null)
                 {
@@ -135,8 +128,8 @@ namespace ProgBlog.Controllers
                     users.Avatar = tempImage;
                 }
 
-              
-                else { users.Avatar = db.Users.Where(u => u.Id == users.Id).Select(u => u.Avatar).First(); }
+
+                else { users.Avatar = db.Users.Where(u => u.ID == users.ID).Select(u => u.Avatar).First(); }
                 db.Entry(users).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
